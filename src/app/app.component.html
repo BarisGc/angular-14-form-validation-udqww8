@@ -1,0 +1,55 @@
+<div>
+  <b>form value: </b>{{ form.value | json }}
+<br />
+<b>form valid: </b>{{ form.valid }}
+<br />
+
+<b>nested formgroup value: </b>{{ form.controls.nestedFormGroup.value | json }}
+<br />
+<b>nested formgroup valid: </b>{{ form.controls.nestedFormGroup.valid }}
+<br />
+<b>nested formgroup touched: </b>{{ form.controls.nestedFormGroup.touched }}
+<br />
+<b>nested formgroup errors: </b
+>{{ form.controls.nestedFormGroup.errors | json }}
+<br />
+
+<div class="register-form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" formControlName="fullname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" formControlName="username" class="form-control" />
+    </div>
+
+    <hr />
+    ↓ nested formgroup ↓
+    <hr />
+    <div
+      formGroupName="nestedFormGroup"
+      (focusout)="onNestedFormFocusout()"
+      [ngStyle]="{ border: '5px solid #dcdcdc' }"
+      id="nestedFormGroup"
+    >
+      <div class="form-group">
+        <label>field1</label>
+        <input type="field1" formControlName="field1" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>field2</label>
+        <input type="text" formControlName="field2" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>
+
+</div>
